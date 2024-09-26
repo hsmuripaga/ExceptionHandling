@@ -1,0 +1,48 @@
+using System.Data;
+using System.Net.Http.Headers;
+
+namespace WinFormsApp1
+{
+    public partial class Form1 : Form
+    {
+        DataTable dt = new DataTable();
+        public Form1()
+        {
+            dt.Columns.Add("Num1");
+            dt.Columns.Add("Num2");
+
+            InitializeComponent();
+            button1.Click += Button1_Click;
+        }
+
+        private void Button1_Click(object? sender, EventArgs e)
+        {
+            DataRow dr = dt.NewRow();
+            dr["Num1"] = tb_num1.Text;
+            dr["Num2"] = tb_num2.Text;
+            dt.Rows.Add(dr);
+
+            dataGridView1.DataSource = dt;
+
+
+            /*try
+            {
+                if (tb_num1.Text.Length > 0 && tb_num2.Text.Length > 0)
+                {
+                    int num1 = int.Parse(tb_num1.Text);
+                    int num2 = int.Parse(tb_num2.Text);
+                    int total = num1 / num2;
+                }
+                else
+                {
+                    throw new FloresError("Wala laman");
+                }
+            }
+            catch(FloresError er)
+            {
+                MessageBox.Show(er.Message);
+            }
+            */
+        }
+    }
+}
